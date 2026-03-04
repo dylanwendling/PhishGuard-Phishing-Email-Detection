@@ -8,4 +8,7 @@ what is needed for project
 
 
   pip install llama-cpp-python --only-binary llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu --no-cache-dir
+  
+  
+  
   pip install huggingface_hub

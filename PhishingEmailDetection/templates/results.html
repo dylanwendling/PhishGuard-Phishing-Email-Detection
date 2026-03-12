@@ -7,7 +7,10 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #f4f7f6; color: #333; padding: 50px; }
         .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;}
+        h1 { color: #2c3e50; margin: 0;}
+        .model-badge { background-color: #e8f4f8; color: #2980b9; padding: 5px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; border: 1px solid #bde0fe;}
+        
         .score-box { background-color: #ffebee; color: #c62828; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; border: 1px solid #ffcdd2; }
         .score-box h2 { margin: 0; font-size: 36px; }
         .section { margin-bottom: 20px; }
@@ -19,7 +22,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Analysis Complete</h1>
+        <div class="header-flex">
+            <h1>Analysis Complete</h1>
+            <div class="model-badge">AI Model: {{ results.model_used }}</div>
+        </div>
         
         <div class="score-box">
             <p>Phishing Risk Score</p>

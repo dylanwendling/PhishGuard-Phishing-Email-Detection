@@ -7,25 +7,62 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #f4f7f6; color: #333; text-align: center; padding: 50px; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; }
-        .upload-box { border: 2px dashed #3498db; padding: 40px; margin: 20px 0; border-radius: 8px; background-color: #eaf2f8; }
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        .subtitle { color: #7f8c8d; margin-bottom: 30px; }
+        
+        /* Model Selection Styles */
+        .model-grid { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
+        .model-card {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: #fdfdfd;
+        }
+        .model-card:hover { border-color: #3498db; background-color: #f0f8ff; }
+        /* Hide the actual radio button */
+        .model-card input[type="radio"] { display: none; }
+        /* Style when the radio button inside is checked */
+        .model-card:has(input[type="radio"]:checked) {
+            border-color: #2ecc71;
+            background-color: #eafaf1;
+            box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+        }
+        .model-name { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px;}
+        .model-speed { display: block; font-size: 12px; color: #555; }
+
+        .upload-box { border: 2px dashed #3498db; padding: 40px; border-radius: 8px; background-color: #eaf2f8; }
         input[type="file"] { margin-bottom: 20px; }
-        button { background-color: #3498db; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;}
         button:hover { background-color: #2980b9; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🛡️ PhishGuard</h1>
-        <p>Upload an .eml file to scan for phishing indicators, malicious links, and domain spoofing.</p>
+        <p class="subtitle">Upload an .eml file to scan for phishing indicators, malicious links, and domain spoofing.</p>
         
-        <div class="upload-box">
-            <form action="/" method="POST" enctype="multipart/form-data">
+        <form action="/" method="POST" enctype="multipart/form-data" id="upload-form">
+            
+            <div class="model-grid">
+                {% for key, model in models.items() %}
+                <label class="model-card">
+                    <input type="radio" name="model_select" value="{{ key }}" {% if selected_model == key %}checked{% endif %}>
+                    <span class="model-name">{{ model.name }}</span>
+                    <span class="model-speed">{{ model.speed }}</span>
+                </label>
+                {% endfor %}
+            </div>
+
+            <div class="upload-box">
                 <input type="file" name="file" accept=".eml" required>
                 <br>
                 <button type="submit">Analyze Email</button>
-            </form>
-        </div>
+            </div>
+            
+        </form>
     </div>
 </body>
 </html>

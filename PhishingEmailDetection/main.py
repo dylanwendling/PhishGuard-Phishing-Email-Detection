@@ -75,7 +75,6 @@ def run_phishguard_model(email_filepath):
         max_tokens=200,
         temperature=0.2,
         repeat_penalty=1.1,
-        stop=["<|im_end|>", "*", "\n\n\n"]
     )
 
     ai_result = response["choices"][0]["message"]["content"]

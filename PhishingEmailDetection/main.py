@@ -72,7 +72,7 @@ def run_phishguard_model(email_filepath):
             {"role": "system", "content": "You are a cybersecurity AI. Analyze this email text for phishing. Briefly explain if it is safe or suspicious."},
             {"role": "user", "content": f"Analyze this email:\n\n{email_text[:1000]}"}
         ],
-        max_tokens=200,
+        max_tokens=600,
         temperature=0.2,
         repeat_penalty=1.1,
     )

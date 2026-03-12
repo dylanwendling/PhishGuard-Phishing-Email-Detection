@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard | Upload</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; color: #333; text-align: center; padding: 50px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; }
+        .upload-box { border: 2px dashed #3498db; padding: 40px; margin: 20px 0; border-radius: 8px; background-color: #eaf2f8; }
+        input[type="file"] { margin-bottom: 20px; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ PhishGuard</h1>
+        <p>Upload an .eml file to scan for phishing indicators, malicious links, and domain spoofing.</p>
+        
+        <div class="upload-box">
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".eml" required>
+                <br>
+                <button type="submit">Analyze Email</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

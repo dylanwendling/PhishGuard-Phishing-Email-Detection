@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard | Analysis Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; color: #333; padding: 50px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .score-box { background-color: #ffebee; color: #c62828; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; border: 1px solid #ffcdd2; }
+        .score-box h2 { margin: 0; font-size: 36px; }
+        .section { margin-bottom: 20px; }
+        .section h3 { color: #34495e; }
+        .rules-list { background-color: #fff3e0; padding: 15px 30px; border-radius: 8px; border: 1px solid #ffe0b2; }
+        .btn { display: inline-block; margin-top: 20px; text-decoration: none; background-color: #7f8c8d; color: white; padding: 10px 20px; border-radius: 4px; }
+        .btn:hover { background-color: #95a5a6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Complete</h1>
+        
+        <div class="score-box">
+            <p>Phishing Risk Score</p>
+            <h2>{{ results.score }} / 100</h2>
+        </div>
+
+        <div class="section">
+            <h3>Triggered Rules:</h3>
+            <ul class="rules-list">
+                {% for rule in results.rules %}
+                    <li>{{ rule }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Explanation:</h3>
+            <p>{{ results.explanation }}</p>
+        </div>
+
+        <a href="/" class="btn">Scan Another Email</a>
+    </div>
+</body>
+</html>
